@@ -1,0 +1,11 @@
+.banner-text{
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner-bg{
+    background-position: center top;
+    background-blend-mode: overlay;
+    object-fit: cover;
+}
