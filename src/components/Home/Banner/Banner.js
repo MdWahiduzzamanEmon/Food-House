@@ -22,6 +22,31 @@ const Banner = () => {
         setSearchFood(value);
     }
     console.log(searchFood);
+
+  const handleBrkfst = (e) => {
+    const buttonInnerText = e.target.parentNode.childNodes[0].innerText;
+    const value = foods.filter((food) =>
+      food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
+    );
+    setSearchFood(value);
+  }
+
+  const handleLunch = (e) => {
+    const buttonInnerText = e.target.parentNode.childNodes[1].innerText;
+    const value = foods.filter((food) =>
+      food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
+    );
+    setSearchFood(value);
+  }
+  
+  const handleDinner = (e) => {
+      const buttonInnerText = e.target.parentNode.childNodes[2].innerText;
+      const value = foods.filter((food) =>
+        food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
+      );
+      setSearchFood(value);
+  }
+  
     return (
       <>
         <div
@@ -49,9 +74,11 @@ const Banner = () => {
 
         <section className="container text-center my-4 py-4">
           <div>
-            <button className="btn fw-bold mx-3">Breakfast</button>
-            <button className="btn fw-bold mx-3">Lunch</button>
-            <button className="btn fw-bold mx-3">Dinner</button>
+            <button className="btn fw-bold mx-3" onClick={handleBrkfst}>Breakfast</button>
+            <button className="btn fw-bold mx-3" onClick={ handleLunch}>Lunch</button>
+            <button className="btn fw-bold mx-3" onClick={
+              handleDinner
+            }>Dinner</button>
           </div>
 
           <Row xs={1} md={2} lg={3} className="g-4 mt-4">
