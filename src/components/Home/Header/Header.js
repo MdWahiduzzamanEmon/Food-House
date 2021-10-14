@@ -25,9 +25,10 @@ const Header = () => {
                 <Nav.Link as={Link} to="/login" className="fw-bold text-dark">
                   Login
                 </Nav.Link>
-                <button className="btn btn-danger rounded-pill mx-3 px-4">
+                <Link to="/signup"><button className="btn btn-danger rounded-pill mx-3 px-4">
                   SIgn up
                 </button>
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
