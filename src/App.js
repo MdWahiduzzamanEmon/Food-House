@@ -1,11 +1,13 @@
-import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Routing from './components/Routing/Routing';
+import AuthProvider from './Context/AuthProvider';
 
 function App() {
   return (
-    <div className="">
-      <Routing></Routing>
+    <div>
+      <AuthProvider>
+        <Routing></Routing>
+      </AuthProvider>
     </div>
   );
 }

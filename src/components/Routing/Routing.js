@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Error from '../Error/Error';
 import Login from '../form/LogIn/Login';
 import Signup from '../form/Signup/Signup';
 import Header from '../Home/Header/Header';
@@ -22,6 +23,9 @@ const Routing = () => {
                     </Route>
                     <Route path="/login">
                         <Login></Login>
+                    </Route>
+                    <Route path="*">
+                        <Error/>
                     </Route>
                 </Switch>
             </Router>

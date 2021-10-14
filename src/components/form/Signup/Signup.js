@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import logo from "../../../Images/logo2.png";
 import googleLogo from "../../../Images/google-logo-9824-32x32.ico";
 import twitterLogo from "../../../Images/logo-twitter-png-5860-32x32.ico";
+import useAuth from '../../../Hooks/useAuth';
 const Signup = () => {
+
+    const {  googleSign } = useAuth();
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center flex-column">
@@ -41,10 +44,10 @@ const Signup = () => {
             </Link>
           </>
           <div>
-            <button className="btn border mt-4 me-4 rounded-pill">
-              <img src={googleLogo} alt="" />
+            <button className="btn border my-4 me-4 rounded-pill">
+              <img src={googleLogo} alt="" onClick={googleSign} />
             </button>
-            <button className="btn border mt-4 rounded-pill">
+            <button className="btn border my-4 rounded-pill">
               <img src={twitterLogo} alt="" />
             </button>
           </div>
