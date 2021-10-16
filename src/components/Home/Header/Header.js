@@ -56,7 +56,7 @@ const Header = () => {
                 </div>
                 {user?.uid && (
                   <div className="d-flex justify-content-center align-items-center">
-                    <h5 className="fw-bold ">{user?.displayName}</h5>
+                    <h5 className="fw-bold border border-3 border-danger rounded p-2 ">{user?.displayName}</h5>
                   </div>
                 )}
                 <Link to="/signup">

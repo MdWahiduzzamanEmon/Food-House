@@ -92,7 +92,7 @@ const Login = () => {
                 className="w-50 m-3 btn btn-outline-danger"
                 onClick={resetPassword}
               >
-                forget Password
+                Forget Password
               </button>
             </div>
           </div>

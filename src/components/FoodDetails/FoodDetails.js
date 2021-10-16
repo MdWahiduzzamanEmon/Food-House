@@ -35,9 +35,9 @@ const FoodDetails = () => {
 
   console.log(newFoodPrice);
     return (
-      <div className="container my-5 py-5 text-md-start">
-        <div className="row justify-content-center alig-items-center flex-column-reverse ">
-          <div className="col-md-5">
+      <div className="container my-5 py-5 text-start">
+        <div className="row align-items-center flex-column-reverse flex-md-row">
+          <div className="col-md-5 text-center text-md-start">
             <h1 className="py-3">{foodItem?.f_name}</h1>
             <p>{foodItem?.f_text}</p>
             <div className="d-md-flex align-items-center py-4">
@@ -54,9 +54,6 @@ const FoodDetails = () => {
                 </button>
               </div>
             </div>
-
-
-
             <button className="btn btn-danger rounded-pill" onClick={() => { handleToAddToCart(foodItem)}}>
               {" "}
               <i className="fas fa-shopping-cart pe-3"></i>Add
@@ -64,9 +61,7 @@ const FoodDetails = () => {
           </div>
 
 
-
-
-          <div className="col-md-7 text-md-end">
+          <div className="col-md-7 text-md-end text-center">
             <img src={foodItem?.f_img} className="img-fluid w-75" alt="" />
           </div>
         </div>
