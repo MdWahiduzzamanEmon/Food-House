@@ -3,13 +3,13 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import logo from "../../../Images/logo2.png"
-
+import { HashLink } from "react-router-hash-link";
 const Header = () => {
   const { user, logOut, addingFood } = useAuth();
   console.log(addingFood);
     return (
       <div>
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" fixed="top">
           <Container>
             <div className=" text-start">
               <Link to="/home">
@@ -25,12 +25,30 @@ const Header = () => {
               >
                 <div>
                   {" "}
-                  <Nav.Link as={Link} to="/home" className="fw-bold text-dark">
+                  <Nav.Link
+                    as={HashLink}
+                    to="/home#home"
+                    className="fw-bold text-dark"
+                  >
                     Home
                   </Nav.Link>
                 </div>
                 <div>
-                  <Nav.Link as={Link} to="/cartitem" className="fw-bold text-dark mx-2">
+                  {" "}
+                  <Nav.Link
+                    as={HashLink}
+                    to="/home#blog"
+                    className="fw-bold text-dark"
+                  >
+                    Blog
+                  </Nav.Link>
+                </div>
+                <div>
+                  <Nav.Link
+                    as={Link}
+                    to="/cartitem"
+                    className="fw-bold text-dark mx-2"
+                  >
                     <button type="button" className="btn position-relative">
                       <i className="fas fa-shopping-cart"></i>
                       <span className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
@@ -56,7 +74,9 @@ const Header = () => {
                 </div>
                 {user?.uid && (
                   <div className="d-flex justify-content-center align-items-center">
-                    <h5 className="fw-bold border border-3 border-danger rounded p-2 ">{user?.displayName}</h5>
+                    <h5 className="fw-bold border border-3 border-danger rounded p-2 ">
+                      {user?.displayName}
+                    </h5>
                   </div>
                 )}
                 <Link to="/signup">

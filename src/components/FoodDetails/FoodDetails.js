@@ -54,12 +54,16 @@ const FoodDetails = () => {
                 </button>
               </div>
             </div>
-            <button className="btn btn-danger rounded-pill" onClick={() => { handleToAddToCart(foodItem)}}>
+            <button
+              className="btn btn-danger rounded-pill"
+              onClick={() => {
+                handleToAddToCart(foodItem);
+              }}
+            >
               {" "}
               <i className="fas fa-shopping-cart pe-3"></i>Add
             </button>
           </div>
-
 
           <div className="col-md-7 text-md-end text-center">
             <img src={foodItem?.f_img} className="img-fluid w-75" alt="" />

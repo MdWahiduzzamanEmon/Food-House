@@ -5,8 +5,8 @@ import photo2 from '../../../Images/Image/chef-cook-food-33614.png'
 import photo3 from '../../../Images/Image/architecture-building-city-2047397.png'
 const Blog = () => {
     return (
-      <div>
-        <div className="container text-start py-5">
+      <div data-aos="fade-up">
+        <div className="container text-start py-5" id="blog">
           <div>
             <h2>Why you choose us?</h2>
             <p className="text-secondary">

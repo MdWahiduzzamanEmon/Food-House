@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 const Food = (props) => {
     const { id, f_name, f_img, f_price, f_text} = props.food;
     return (
-      <Col>
-        
+      <Col data-aos="fade-up">
         <Card className="py-3 border-0 cart">
           <img src={f_img} className="img-fluid w-50 my-3 mx-auto" alt="" />
           <h6>{f_name}</h6>

@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Banner.css'
 import bannerimg from '../../../Images/bannerbackground.png'
 import Food from "./Food";
 import { Row } from "react-bootstrap";
 import useData from "../../../Hooks/useData";
 import { Link } from "react-router-dom";
+
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const Banner = () => {
   const { foods, setSearchFood, searchFood } = useData();
-    
+ 
 
    
-    
+  useEffect(() => {
+    AOS.init({duration:2000});
+  }, [])
+  
+
     const handleToShowFood = (e) => {
         const searchText = e.target.value;
         const value = foods.filter(food => food.f_name.toLowerCase().includes(searchText.toLowerCase()))
@@ -51,16 +60,16 @@ const Banner = () => {
   console.log(searchFood);
   
     return (
-      <>
+      <div className="mt-5 pt-3" id="home">
         <div
-          className="banner-bg"
+          className="banner-bg "
           style={{ backgroundImage: `url(${bannerimg})` }}
         >
           <div className="conatiner">
             <div className="banner-text text-center">
               <div>
                 <h1>Best food waiting for you</h1>
-                <div className="input-group mb-3 mt-4">
+                <div data-aos="fade-up" className="input-group mb-3 mt-4">
                   <input
                     type="text"
                     className="form-control p-3 rounded-pill position-relative text-center"
@@ -112,7 +121,7 @@ const Banner = () => {
             </Link>
           </div>
         </section>
-      </>
+      </div>
     );
 };
 
