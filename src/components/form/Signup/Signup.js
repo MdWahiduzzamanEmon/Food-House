@@ -1,13 +1,16 @@
 import React from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+
 import logo from "../../../Images/logo2.png";
 import googleLogo from "../../../Images/google-logo-9824-32x32.ico";
 import twitterLogo from "../../../Images/logo-twitter-png-5860-32x32.ico";
 import useAuth from '../../../Hooks/useAuth';
 const Signup = () => {
 
-    const { googleSign, twitterSign } = useAuth();
+  const { googleSign, twitterSign } = useAuth();
+
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center flex-column">
@@ -48,7 +51,7 @@ const Signup = () => {
               <img src={googleLogo} alt="" onClick={googleSign} />
             </button>
             <button className="btn border my-4 rounded-pill">
-              <img src={twitterLogo} onClick={twitterSign } alt="" />
+              <img src={twitterLogo} onClick={twitterSign} alt="" />
             </button>
           </div>
         </div>

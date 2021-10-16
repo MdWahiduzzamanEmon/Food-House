@@ -6,6 +6,7 @@ import Error from '../Error/Error';
 import FoodDetails from '../FoodDetails/FoodDetails';
 import Login from '../form/LogIn/Login';
 import Signup from '../form/Signup/Signup';
+import CartItem from '../Home/CartItem/CartItem';
 import Header from '../Home/Header/Header';
 import Home from '../Home/Home/Home';
 
@@ -30,8 +31,11 @@ const Routing = () => {
                     <PrivateRoute path="/foodDetails/:foodId">
                         <FoodDetails></FoodDetails>
                     </PrivateRoute>
-                    <Route path="/allFoods">
+                    <PrivateRoute path="/allFoods">
                         <AllFoods></AllFoods>
+                    </PrivateRoute>
+                    <Route path="/cartitem">
+                        <CartItem></CartItem>
                     </Route>
                     <Route path="*">
                         <Error/>

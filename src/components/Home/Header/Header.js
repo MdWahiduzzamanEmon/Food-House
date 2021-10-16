@@ -5,7 +5,8 @@ import useAuth from '../../../Hooks/useAuth';
 import logo from "../../../Images/logo2.png"
 
 const Header = () => {
-  const { user ,logOut} = useAuth();
+  const { user, logOut, addingFood } = useAuth();
+  console.log(addingFood);
     return (
       <div>
         <Navbar bg="light" expand="lg">
@@ -29,11 +30,11 @@ const Header = () => {
                   </Nav.Link>
                 </div>
                 <div>
-                  <Nav.Link as={Link} to="" className="fw-bold text-dark mx-2">
+                  <Nav.Link as={Link} to="/cartitem" className="fw-bold text-dark mx-2">
                     <button type="button" className="btn position-relative">
                       <i className="fas fa-shopping-cart"></i>
                       <span className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
-                        99+
+                        {addingFood.length}
                       </span>
                     </button>
                   </Nav.Link>

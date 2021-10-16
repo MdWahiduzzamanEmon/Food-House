@@ -1,7 +1,7 @@
 import React from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
 import googleLogo from '../../../Images/google-logo-9824-32x32.ico'
 import twitterLogo from '../../../Images/logo-twitter-png-5860-32x32.ico'
 import logo from "../../../Images/logo2.png";
@@ -19,6 +19,17 @@ const Login = () => {
         // setError(error.message);
       })
       .finally(() => {
+        setIsLoading(false);
+      })
+  }
+  const redirectToTwitter = () => {
+    twitterSign()
+      .then((result) => {
+         history.push(redirect_url);
+      })
+      .catch((error) => {
+        
+      }).finally(() => {
         setIsLoading(false);
       })
   }
@@ -45,12 +56,18 @@ const Login = () => {
             <button className="w-50 mt-3 btn btn-danger">Login</button>
           </>
 
+          <Link
+            to="/signup"
+            className="text-danger fw-bold text-decoration-none py-3"
+          >
+            --Register--
+          </Link>
           <div>
             <button className="btn border mt-5 me-4 rounded-pill">
               <img src={googleLogo} alt="" onClick={redirectToGoogle} />
             </button>
             <button className="btn border mt-5 rounded-pill">
-              <img src={twitterLogo} onClick={twitterSign} alt="" />
+              <img src={twitterLogo} onClick={redirectToTwitter} alt="" />
             </button>
           </div>
         </div>

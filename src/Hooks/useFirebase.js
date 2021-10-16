@@ -17,7 +17,15 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [popUpMessage, setPopUpMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+  const [addingFood, setAddingFood] = useState([]);
+  
 
+  const handleToAddToCart = (meal) => {
+    const adding = [...addingFood, meal];
+     setAddingFood(adding);
+  }
+  
+  console.log(addingFood);
     const auth = getAuth();
 
     // google sign 
@@ -30,14 +38,8 @@ const useFirebase = () => {
     // twitter sign 
 
     const twitterSign = () => {
-        signInWithPopup(auth, twitterProvider)
-          .then((result) => {
-              setUser(result.user);
-              console.log(result.user);
-          })
-          .catch((error) => {
-            setError(error.message);
-          });
+        return signInWithPopup(auth, twitterProvider)
+          
     }
     // stateChange 
     useEffect(() => {
@@ -77,6 +79,8 @@ const useFirebase = () => {
       logOut,
       isLoading,
       setIsLoading,
+      handleToAddToCart,
+      addingFood,
     };
 };
 
