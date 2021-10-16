@@ -1,11 +1,28 @@
 import React from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
+import { useLocation, useHistory } from "react-router-dom";
 import googleLogo from '../../../Images/google-logo-9824-32x32.ico'
 import twitterLogo from '../../../Images/logo-twitter-png-5860-32x32.ico'
 import logo from "../../../Images/logo2.png";
 const Login = () => {
-  const { googleSign } = useAuth();
+  const { googleSign, twitterSign ,setIsLoading} = useAuth();
+  const location = useLocation();
+  const redirect_url = location.state?.from;
+  const history = useHistory();
+  const redirectToGoogle = () => {
+    googleSign()
+      .then((result) => {
+       history.push(redirect_url)
+      })
+      .catch((error) => {
+        // setError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+  }
+
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center flex-column">
@@ -30,10 +47,10 @@ const Login = () => {
 
           <div>
             <button className="btn border mt-5 me-4 rounded-pill">
-              <img src={googleLogo} alt="" onClick={googleSign} />
+              <img src={googleLogo} alt="" onClick={redirectToGoogle} />
             </button>
             <button className="btn border mt-5 rounded-pill">
-              <img src={twitterLogo} alt="" />
+              <img src={twitterLogo} onClick={twitterSign} alt="" />
             </button>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from '../../PrivateRoute/PrivateRoute';
+import AllFoods from '../AllFoods/AllFoods';
 import Error from '../Error/Error';
+import FoodDetails from '../FoodDetails/FoodDetails';
 import Login from '../form/LogIn/Login';
 import Signup from '../form/Signup/Signup';
 import Header from '../Home/Header/Header';
@@ -23,6 +26,12 @@ const Routing = () => {
                     </Route>
                     <Route path="/login">
                         <Login></Login>
+                    </Route>
+                    <PrivateRoute path="/foodDetails/:foodId">
+                        <FoodDetails></FoodDetails>
+                    </PrivateRoute>
+                    <Route path="/allFoods">
+                        <AllFoods></AllFoods>
                     </Route>
                     <Route path="*">
                         <Error/>

@@ -7,7 +7,7 @@ import twitterLogo from "../../../Images/logo-twitter-png-5860-32x32.ico";
 import useAuth from '../../../Hooks/useAuth';
 const Signup = () => {
 
-    const {  googleSign } = useAuth();
+    const { googleSign, twitterSign } = useAuth();
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center flex-column">
@@ -48,7 +48,7 @@ const Signup = () => {
               <img src={googleLogo} alt="" onClick={googleSign} />
             </button>
             <button className="btn border my-4 rounded-pill">
-              <img src={twitterLogo} alt="" />
+              <img src={twitterLogo} onClick={twitterSign } alt="" />
             </button>
           </div>
         </div>

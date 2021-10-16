@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import './Banner.css'
 import bannerimg from '../../../Images/bannerbackground.png'
 import Food from "./Food";
 import { Row } from "react-bootstrap";
+import useData from "../../../Hooks/useData";
+import { Link } from "react-router-dom";
 const Banner = () => {
-    const [foods, setFoods] = useState([]);
-    const [searchFood, setSearchFood] = useState([]);
+  const { foods, setSearchFood, searchFood } = useData();
+    
 
-    useEffect(() => {
-        fetch('./food-fakeData.json')
-          .then((res) => res.json())
-            .then((data) => {
-                setFoods(data);
-                setSearchFood(data);
-          });
-    }, [])
+   
     
     const handleToShowFood = (e) => {
         const searchText = e.target.value;
         const value = foods.filter(food => food.f_name.toLowerCase().includes(searchText.toLowerCase()))
         setSearchFood(value);
     }
-    console.log(searchFood);
 
-  const handleBrkfst = (e) => {
+
+  
+// another type  
+  /* const handleBrkfst = (e) => {
     const buttonInnerText = e.target.parentNode.childNodes[0].innerText;
     const value = foods.filter((food) =>
       food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
@@ -37,14 +34,19 @@ const Banner = () => {
       food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
     );
     setSearchFood(value);
-  }
-  
-  const handleDinner = (e) => {
+  } */
+
+ /*  const handleDinner = (e) => {
       const buttonInnerText = e.target.parentNode.childNodes[2].innerText;
       const value = foods.filter((food) =>
         food.f_menu_time.toLowerCase().includes(buttonInnerText.toLowerCase())
       );
       setSearchFood(value);
+  } */
+
+  const handleToCetagory = (cetagory) => {
+    const value = foods.filter(food => food.f_menu_time.toLowerCase().includes(cetagory.toLowerCase()))
+    setSearchFood(value)
   }
   
     return (
@@ -74,18 +76,38 @@ const Banner = () => {
 
         <section className="container text-center my-4 py-4">
           <div>
-            <button className="btn fw-bold mx-3" onClick={handleBrkfst}>Breakfast</button>
-            <button className="btn fw-bold mx-3" onClick={ handleLunch}>Lunch</button>
-            <button className="btn fw-bold mx-3" onClick={
-              handleDinner
-            }>Dinner</button>
+              <button
+                className="btn fw-bold mx-3 active"
+                onClick={() => handleToCetagory("Breakfast")}
+              >
+                Breakfast
+              </button>
+          
+            <button
+              className="btn fw-bold mx-3 active"
+              onClick={() => handleToCetagory("lunch")}
+            >
+              Lunch
+            </button>
+            <button
+              className="btn fw-bold mx-3 active"
+              onClick={() => handleToCetagory("dinner")}
+            >
+              Dinner
+            </button>
           </div>
 
           <Row xs={1} md={2} lg={3} className="g-4 mt-4">
-            {searchFood?.slice(0,6).map((food) => (
+            {searchFood?.slice(0, 6).map((food) => (
               <Food key={food.id} food={food}></Food>
             ))}
           </Row>
+
+          <div>
+            <Link to="/allFoods">
+              <button className="btn btn-danger rounded-pill mt-5"> All Foods</button>
+            </Link>
+          </div>
         </section>
       </>
     );

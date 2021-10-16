@@ -4,31 +4,41 @@ import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
-  onAuthStateChanged,
+    onAuthStateChanged,
+  TwitterAuthProvider ,
   signOut,
 } from "firebase/auth";
 initializationFirebase()
 
 const googleProvider = new GoogleAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [popUpMessage, setPopUpMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
 
     // google sign 
     const googleSign = () => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-              setUser(result.user);
-          })
-            .catch((error) => {
-              setError(error.message);
-          });
+        setIsLoading(true);
+        return signInWithPopup(auth, googleProvider)
+            
 
     }
+    // twitter sign 
 
+    const twitterSign = () => {
+        signInWithPopup(auth, twitterProvider)
+          .then((result) => {
+              setUser(result.user);
+              console.log(result.user);
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+    }
     // stateChange 
     useEffect(() => {
       const unSubcribe=onAuthStateChanged(auth, (user) => {
@@ -37,12 +47,14 @@ const useFirebase = () => {
         } else {
            setUser({});
         }
+        setIsLoading(false);
       });
         return unSubcribe;
     }, []);
 
 // logout 
-    const logOut = () => {
+  const logOut = () => {
+      setIsLoading(true);
         signOut(auth)
             .then(() => {
                 setUser({});
@@ -50,17 +62,21 @@ const useFirebase = () => {
           })
           .catch((error) => {
             // An error happened.
-          });
+          }).finally(() => {
+            setIsLoading(false);
+          })
     }
     
     
     return {
       googleSign,
       user,
-        error,
+      error,
       popUpMessage,
-        logOut
-      
+      twitterSign,
+      logOut,
+      isLoading,
+      setIsLoading,
     };
 };
 
