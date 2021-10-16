@@ -5,6 +5,10 @@ import { useLocation, useHistory, Link } from "react-router-dom";
 import googleLogo from '../../../Images/google-logo-9824-32x32.ico'
 import twitterLogo from '../../../Images/logo-twitter-png-5860-32x32.ico'
 import logo from "../../../Images/logo2.png";
+
+  import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+  toast.configure()
 const Login = () => {
   const {
     googleSign,
@@ -46,17 +50,19 @@ const Login = () => {
       .then((result) => {
         // Signed in
         history.push(redirect_url);
-        alert("log in success");
+        // alert("log in success");
+         toast("log in success!");
         // ...
       })
       .catch((error) => {
-        console.log(error.message);
+                 toast(error.message);
+
       });
   }
 
     return (
       <div>
-        <div className="d-flex justify-content-center align-items-center flex-column">
+        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
           <img src={logo} className="img-fluid w-25 my-5" alt="" />
           <div className="w-75">
             <FloatingLabel

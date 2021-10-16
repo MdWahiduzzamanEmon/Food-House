@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import initializationFirebase from '../Firebase/Firebase.init';
+  import { toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -17,6 +19,9 @@ initializationFirebase()
 
 const googleProvider = new GoogleAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
+
+toast.configure();
+ 
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
@@ -71,7 +76,7 @@ const [name,setName]=useState('')
   const handleRegForm = (e) => {
     e.preventDefault();
     if (password.length < 6) {
-      return alert("Password must be atleast 6 character");
+      return toast("Password must be atleast 6 character");
     }
     register(email, password);
     
@@ -86,7 +91,7 @@ const [name,setName]=useState('')
       .then((result) => {
         // Signed in
         // ...
-        alert("user create success");
+         toast("Succesfully register");
         updateName();
         emailVerification();
       })
@@ -108,17 +113,13 @@ const [name,setName]=useState('')
       .then(() => {
       
       })
-      .catch((error) => {
-        // An error occurred
-        // ...
-      });
   }
 
   // email verification 
   const emailVerification = () => {
     sendEmailVerification(auth.currentUser).then(() => {
       // Email verification sent!
-      alert("Email verification sent!");
+       toast("Email verification sent!");
       // ...
     });
 
@@ -129,7 +130,8 @@ const [name,setName]=useState('')
     sendPasswordResetEmail(auth, email)
       .then(() => {
         // Password reset email sent!
-        alert("Password reset email sent!");
+    
+         toast("Check your email to reset");
         // ..
       })
       
@@ -141,10 +143,6 @@ const [name,setName]=useState('')
     signOut(auth)
       .then(() => {
         setUser({});
-        setPopUpMessage("LogOut Successful");
-      })
-      .catch((error) => {
-        // An error happened.
       })
       .finally(() => {
         setIsLoading(false);

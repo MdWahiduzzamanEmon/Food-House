@@ -57,7 +57,7 @@ const Banner = () => {
     const value = foods.filter(food => food.f_menu_time.toLowerCase().includes(cetagory.toLowerCase()))
     setSearchFood(value)
   }
-  console.log(searchFood);
+  // console.log(searchFood);
   
     return (
       <div className="mt-5 pt-3" id="home">
