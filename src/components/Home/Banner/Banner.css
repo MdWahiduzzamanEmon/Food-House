@@ -8,6 +8,7 @@
     background-position: center top;
     background-blend-mode: overlay;
     object-fit: cover;
+    background-attachment: fixed;
 }
 .cart{
     transition: .5s ease all;
@@ -21,4 +22,7 @@
 }
 .priceNumber{
     width:40px
+}
+.height{
+    height:90vh
 }

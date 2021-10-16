@@ -4,6 +4,7 @@ import PrivateRoute from '../../PrivateRoute/PrivateRoute';
 import AllFoods from '../AllFoods/AllFoods';
 import Error from '../Error/Error';
 import FoodDetails from '../FoodDetails/FoodDetails';
+import Footer from '../Footer/Footer';
 import Login from '../form/LogIn/Login';
 import Signup from '../form/Signup/Signup';
 import CartItem from '../Home/CartItem/CartItem';
@@ -41,6 +42,7 @@ const Routing = () => {
                         <Error/>
                     </Route>
                 </Switch>
+                <Footer></Footer>
             </Router>
         </div>
     );

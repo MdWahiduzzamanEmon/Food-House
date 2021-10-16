@@ -6,9 +6,17 @@ import googleLogo from '../../../Images/google-logo-9824-32x32.ico'
 import twitterLogo from '../../../Images/logo-twitter-png-5860-32x32.ico'
 import logo from "../../../Images/logo2.png";
 const Login = () => {
-  const { googleSign, twitterSign ,setIsLoading} = useAuth();
+  const {
+    googleSign,
+    twitterSign,
+    setIsLoading,
+    handleToGetPassword,
+    handleToGetEmail,
+    loginUser,
+    resetPassword,
+  } = useAuth();
   const location = useLocation();
-  const redirect_url = location.state?.from;
+  const redirect_url = location.state?.from|| "/home";
   const history = useHistory();
   const redirectToGoogle = () => {
     googleSign()
@@ -33,28 +41,61 @@ const Login = () => {
         setIsLoading(false);
       })
   }
+  const redirect_signIn = () => {
+    loginUser()
+      .then((result) => {
+        // Signed in
+        history.push(redirect_url);
+        alert("log in success");
+        // ...
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
 
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center flex-column">
           <img src={logo} className="img-fluid w-25 my-5" alt="" />
-          <>
+          <div className="w-75">
             <FloatingLabel
               controlId="floatingInput"
               label="Email"
-              className="mb-3 w-50"
+              className="mb-3"
             >
-              <Form.Control type="email" placeholder="name@example.com" />
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                onBlur={handleToGetEmail}
+              />
             </FloatingLabel>
             <FloatingLabel
               controlId="floatingPassword"
               label="Password"
-              className="w-50"
+              className=""
             >
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onBlur={handleToGetPassword}
+              />
             </FloatingLabel>
-            <button className="w-50 mt-3 btn btn-danger">Login</button>
-          </>
+            <div>
+              <button
+                className="w-25 m-3 btn btn-danger"
+                onClick={redirect_signIn}
+              >
+                Login
+              </button>
+              <button
+                className="w-50 m-3 btn btn-outline-danger"
+                onClick={resetPassword}
+              >
+                forget Password
+              </button>
+            </div>
+          </div>
 
           <Link
             to="/signup"

@@ -20,7 +20,7 @@ const Header = () => {
             <Navbar.Collapse id="navbarScroll">
               <Nav
                 className="ms-auto my-2 my-lg-0 "
-                style={{ maxHeight: "200px" }}
+                style={{ maxHeight: "240px" }}
                 navbarScroll
               >
                 <div>
@@ -56,11 +56,7 @@ const Header = () => {
                 </div>
                 {user?.uid && (
                   <div className="d-flex justify-content-center align-items-center">
-                    <img
-                      src={user?.photoURL}
-                      className="w-50 rounded-circle img-fluid"
-                      alt=""
-                    />
+                    <h5 className="fw-bold ">{user?.displayName}</h5>
                   </div>
                 )}
                 <Link to="/signup">

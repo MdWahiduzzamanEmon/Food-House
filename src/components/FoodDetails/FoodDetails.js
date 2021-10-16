@@ -35,16 +35,16 @@ const FoodDetails = () => {
 
   console.log(newFoodPrice);
     return (
-      <div className="container my-5 py-5 text-start">
-        <div className="row justify-content-center align-items-center">
+      <div className="container my-5 py-5 text-md-start">
+        <div className="row justify-content-center alig-items-center flex-column-reverse ">
           <div className="col-md-5">
             <h1 className="py-3">{foodItem?.f_name}</h1>
             <p>{foodItem?.f_text}</p>
-            <div className="d-flex align-items-center py-4">
-              <div className="me-3 pe-4">
+            <div className="d-md-flex align-items-center py-4">
+              <div className="me-md-3 pe-md-4">
                 <h2>${newFoodPrice.toFixed(2)}</h2>
               </div>
-              <div className="d-flex">
+              <div className="d-flex justify-content-center align-items-center">
                 <button className="btn border mx-2" onClick={minusPrice}>
                   <i className="fas fa-minus"></i>
                 </button>
@@ -66,7 +66,7 @@ const FoodDetails = () => {
 
 
 
-          <div className="col-md-7 text-end">
+          <div className="col-md-7 text-md-end">
             <img src={foodItem?.f_img} className="img-fluid w-75" alt="" />
           </div>
         </div>

@@ -5,7 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 const CartItem = () => {
     const { addingFood } = useAuth();
     return (
-      <div>
+      <div className="height">
         {addingFood.map((addFood) => (
           <div key={addFood.id} className="container my-5 d-flex">
             <div style={{ width: "28rem" }} className="d-flex text-start justify-content-evenly align-items-center">
