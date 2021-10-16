@@ -26,6 +26,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
 const [name,setName]=useState('')
+const [photo,setPhoto]=useState('')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [popUpMessage, setPopUpMessage] = useState("");
@@ -72,6 +73,9 @@ const [name,setName]=useState('')
   const handleToGetName = (e) => {
     setName(e.target.value);
   };
+  const handleToGetPhoto = (e) => {
+    setPhoto(e.target.value);
+  };
 
   const handleRegForm = (e) => {
     e.preventDefault();
@@ -91,10 +95,11 @@ const [name,setName]=useState('')
       .then((result) => {
         // Signed in
         // ...
-         toast("Succesfully register");
+        toast("Succesfully register");
         updateName();
         emailVerification();
       })
+      .catch(toast("Already registered"));
   };
 
   // login user
@@ -108,11 +113,9 @@ const [name,setName]=useState('')
 
   const updateName = () => {
     updateProfile(auth.currentUser, {
-      displayName:name,
-    })
-      .then(() => {
-      
-      })
+      displayName: name,
+      photoURL: photo,
+    }).then(() => {});
   }
 
   // email verification 
@@ -166,6 +169,7 @@ const [name,setName]=useState('')
     handleToGetName,
     loginUser,
     resetPassword,
+    handleToGetPhoto,
   };
 };
 

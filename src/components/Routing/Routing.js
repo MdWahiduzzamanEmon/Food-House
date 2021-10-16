@@ -35,9 +35,9 @@ const Routing = () => {
                     <PrivateRoute path="/allFoods">
                         <AllFoods></AllFoods>
                     </PrivateRoute>
-                    <Route path="/cartitem">
+                    <PrivateRoute path="/cartitem">
                         <CartItem></CartItem>
-                    </Route>
+                    </PrivateRoute>
                     <Route path="*">
                         <Error/>
                     </Route>

@@ -1,5 +1,5 @@
 import  { useEffect, useState } from "react";
-import useAuth from "./useAuth";
+
 
 const useData = () => {
     const [foods, setFoods] = useState([]);

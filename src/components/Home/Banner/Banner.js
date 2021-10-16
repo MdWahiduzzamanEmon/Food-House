@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 
 const Banner = () => {
   const { foods, setSearchFood, searchFood } = useData();
- 
+  // const [active,setActive]=useState("breakfast")
 
    
   useEffect(() => {
@@ -57,6 +57,9 @@ const Banner = () => {
     const value = foods.filter(food => food.f_menu_time.toLowerCase().includes(cetagory.toLowerCase()))
     setSearchFood(value)
   }
+
+    const actives = searchFood.find((food) => food.f_menu_time);
+  
   // console.log(searchFood);
   
     return (
@@ -85,26 +88,38 @@ const Banner = () => {
         </div>
 
         <section className="container text-center my-4 py-4">
-          <div>
-            <button
-              className="btn fw-bold mx-3 active"
+          <div className="d-flex justify-content-evenly button">
+            <p
+              className={
+                actives?.f_menu_time === "breakfast"
+                  ? "active fw-bold text-decoration-underline"
+                  : " fw-bold"
+              }
               onClick={() => handleToCetagory("Breakfast")}
             >
               Breakfast
-            </button>
+            </p>
 
-            <button
-              className="btn fw-bold mx-3 active"
+            <p
+              className={
+                actives?.f_menu_time === "lunch"
+                  ? " active fw-bold text-decoration-underline"
+                  : " fw-bold"
+              }
               onClick={() => handleToCetagory("lunch")}
             >
               Lunch
-            </button>
-            <button
-              className="btn fw-bold mx-3 active"
+            </p>
+            <p
+              className={
+                actives?.f_menu_time === "dinner"
+                  ? "active fw-bold text-decoration-underline"
+                  : " fw-bold"
+              }
               onClick={() => handleToCetagory("dinner")}
             >
               Dinner
-            </button>
+            </p>
           </div>
           <Row xs={1} md={2} lg={3} className="g-4 mt-4">
             {searchFood?.slice(0, 6).map((food) => (

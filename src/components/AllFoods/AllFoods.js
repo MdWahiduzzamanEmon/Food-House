@@ -19,7 +19,8 @@ const AllFoods = () => {
          );
           setSearchFood(value);
 
-     };
+  };
+  const actives = searchFood.find((food) => food.f_menu_time);
     return (
       <div className="text-center container">
         <div className="input-group mb-3 mt-4">
@@ -32,26 +33,38 @@ const AllFoods = () => {
             onChange={handleToShowFood}
           />
         </div>
-        <div>
-          <button
-            className="btn fw-bold mx-3 active"
+        <div className="d-flex justify-content-evenly button">
+          <p
+            className={
+              actives?.f_menu_time === "breakfast"
+                ? "active fw-bold text-decoration-underline"
+                : " fw-bold"
+            }
             onClick={() => handleToCetagory("Breakfast")}
           >
             Breakfast
-          </button>
+          </p>
 
-          <button
-            className="btn fw-bold mx-3 active"
+          <p
+            className={
+              actives?.f_menu_time === "lunch"
+                ? " active fw-bold text-decoration-underline"
+                : " fw-bold"
+            }
             onClick={() => handleToCetagory("lunch")}
           >
             Lunch
-          </button>
-          <button
-            className="btn fw-bold mx-3 active"
+          </p>
+          <p
+            className={
+              actives?.f_menu_time === "dinner"
+                ? "active fw-bold text-decoration-underline"
+                : " fw-bold"
+            }
             onClick={() => handleToCetagory("dinner")}
           >
             Dinner
-          </button>
+          </p>
         </div>
         <Row xs={1} md={2} lg={3} className="g-4 mt-4">
           {searchFood?.map((food) => (

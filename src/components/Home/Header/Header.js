@@ -47,20 +47,23 @@ const Header = () => {
                   <Nav.Link
                     as={Link}
                     to="/cartitem"
-                    className="fw-bold text-dark mx-2"
+                    className="fw-bold text-dark"
                   >
-                    <button type="button" className="btn position-relative">
+                    <p type="button" className="btn position-relative">
                       <i className="fas fa-shopping-cart"></i>
                       <span className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                         {addingFood.length}
                       </span>
-                    </button>
+                    </p>
                   </Nav.Link>
                 </div>
                 <div>
                   {user?.uid ? (
-                    <button className="fw-bold px-4 btn" onClick={logOut}>
-                      Logout
+                    <button
+                      className="fw-bold btn-handle btn"
+                      onClick={logOut}
+                    >
+                      <i className="fas fa-sign-out-alt font"></i>
                     </button>
                   ) : (
                     <Nav.Link
@@ -73,17 +76,17 @@ const Header = () => {
                   )}
                 </div>
                 {user?.uid && (
-                  <div className="d-flex justify-content-center align-items-center">
-                    <h5 className="fw-bold border border-3 border-danger rounded p-2 ">
-                      {user?.displayName}
+                  <div className="d-flex">
+                    <h5 className="fw-bold rounded p-2 ">
+                      {user?.displayName} <img src={ user?.photoURL} alt="" className="img-fluid profile_img"/>
                     </h5>
                   </div>
                 )}
-                <Link to="/signup">
+                {!user?.uid && <Link to="/signup">
                   <button className="btn btn-danger rounded-pill mx-3 px-4">
                     SignUp
                   </button>
-                </Link>
+                </Link>}
               </Nav>
             </Navbar.Collapse>
           </Container>

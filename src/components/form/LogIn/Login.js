@@ -5,6 +5,8 @@ import { useLocation, useHistory, Link } from "react-router-dom";
 import googleLogo from '../../../Images/google-logo-9824-32x32.ico'
 import twitterLogo from '../../../Images/logo-twitter-png-5860-32x32.ico'
 import logo from "../../../Images/logo2.png";
+import bannerimg from "../../../Images/bannerbackground.png";
+
 
   import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -61,8 +63,11 @@ const Login = () => {
   }
 
     return (
-      <div>
-        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
+      <div
+        style={{ backgroundImage: `url(${bannerimg})` }}
+        className="banner-bg"
+      >
+        <div className="d-flex justify-content-center align-items-center flex-column mt-5 pt-5">
           <img src={logo} className="img-fluid w-25 my-5" alt="" />
           <div className="w-75">
             <FloatingLabel
@@ -109,7 +114,7 @@ const Login = () => {
           >
             --Register--
           </Link>
-          <div>
+          <div className="pb-4">
             <button className="btn border mt-5 me-4 rounded-pill">
               <img src={googleLogo} alt="" onClick={redirectToGoogle} />
             </button>

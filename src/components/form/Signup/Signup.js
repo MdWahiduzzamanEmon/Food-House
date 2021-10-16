@@ -2,6 +2,7 @@ import React from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import bannerimg from "../../../Images/bannerbackground.png";
 
 import logo from "../../../Images/logo2.png";
 import googleLogo from "../../../Images/google-logo-9824-32x32.ico";
@@ -16,11 +17,15 @@ const Signup = () => {
     handleRegForm,
     handleToGetPassword,
     handleToGetName,
+    handleToGetPhoto,
   } = useAuth();
 
     return (
-      <div>
-        <div className="d-flex justify-content-center align-items-center flex-column">
+      <div
+        style={{ backgroundImage: `url(${bannerimg})` }}
+        className="banner-bg"
+      >
+        <div className="d-flex justify-content-center align-items-center flex-column mt-5 pt-4">
           <img src={logo} className="img-fluid w-25 my-5" alt="" />
           <Form className="w-75" onSubmit={handleRegForm}>
             <FloatingLabel label="Name" className="mb-3">
@@ -28,6 +33,16 @@ const Signup = () => {
                 type="text"
                 placeholder="Name"
                 onBlur={handleToGetName}
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              label="Input your profile Photo link"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Input your profile Photo link"
+                onBlur={handleToGetPhoto}
               />
             </FloatingLabel>
             <FloatingLabel label="Email" className="mb-3">
