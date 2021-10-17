@@ -9,9 +9,9 @@ export const useAddToCart = () => {
 
 const AddtoCart = ({ children }) => {
     const [addingFood, setAddingFood] = useState([]);
+     
     const handleToAddToCart = (meal) => {
-        const adding = [...addingFood, meal];
-        
+    const adding = [...addingFood, meal];
    setAddingFood(adding);
  };
 

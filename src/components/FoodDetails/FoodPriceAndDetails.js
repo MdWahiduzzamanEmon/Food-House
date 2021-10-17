@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FoodPriceAndDetails = (props) => {
-
+ 
     return (
       <div>
         <div>
@@ -9,13 +9,14 @@ const FoodPriceAndDetails = (props) => {
           <p>{props.foodItem?.f_text}</p>
           <div className="d-md-flex align-items-center py-4">
             <div className="me-md-3 pe-md-4">
-              <h2>${props.newfoodAmount}</h2>
+              {/* <h2>${props.foodItem?.f_price.toFixed(2)}</h2> */}
+              <h2>${props.newfoodAmount.toFixed(2)}</h2>
             </div>
             <div className="d-flex justify-content-center align-items-center">
               <button className="btn border mx-2" onClick={props.minusPrice}>
                 <i className="fas fa-minus"></i>
               </button>
-              <h3>{props.foodAmount}</h3>
+              <h3>{props.foodItem?.quantity}</h3>
               <button className="btn border mx-2" onClick={props.plusPrice}>
                 <i className="fas fa-plus"></i>
               </button>
