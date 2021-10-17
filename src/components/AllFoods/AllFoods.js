@@ -22,7 +22,7 @@ const AllFoods = () => {
   };
   const actives = searchFood.find((food) => food.f_menu_time);
     return (
-      <div className="text-center container">
+      <div className="text-center container mt-5 pt-5">
         <div className="input-group mb-3 mt-4">
           <input
             type="text"

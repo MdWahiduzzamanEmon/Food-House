@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import useAuth from '../../Hooks/useAuth';
+import { useAddToCart } from '../../Context/AddtoCart';
 import useData from '../../Hooks/useData';
+import FoodPriceAndDetails from './FoodPriceAndDetails';
 
 
 const FoodDetails = () => {
     const { foodId } = useParams();
   const { foods } = useData();
-  const {handleToAddToCart}=useAuth();
+  const {handleToAddToCart}=useAddToCart();
   const [foodAmount, setFoodAmount] = useState(1);
   // const [plusAmount ,setPlusAmount]=useState();
     const foodItem = foods.find(
       (food) => parseInt(food?.id) === parseInt(foodId)
     );
     // console.log(foodItem);
+  let newfoodAmount = foodItem?.f_price * foodAmount;
   
+  // console.log(foodItem.f_price);
   console.log(foodAmount);
   const plusPrice = () => {
     const newAmount = parseInt(foodAmount) + parseInt(1);
+
     return setFoodAmount(newAmount);
   }
   // console.log(plusAmount);
@@ -31,29 +35,20 @@ const FoodDetails = () => {
     }  
   }
 
-  const newFoodPrice = foodItem?.f_price * foodAmount;
+  
 
-  console.log(newFoodPrice);
+  console.log(newfoodAmount);
     return (
       <div className="container my-5 py-5 text-start">
         <div className="row align-items-center flex-column-reverse flex-md-row">
           <div className="col-md-5 text-center text-md-start">
-            <h1 className="py-3">{foodItem?.f_name}</h1>
-            <p>{foodItem?.f_text}</p>
-            <div className="d-md-flex align-items-center py-4">
-              <div className="me-md-3 pe-md-4">
-                <h2>${newFoodPrice.toFixed(2)}</h2>
-              </div>
-              <div className="d-flex justify-content-center align-items-center">
-                <button className="btn border mx-2" onClick={minusPrice}>
-                  <i className="fas fa-minus"></i>
-                </button>
-                <h3>{foodAmount}</h3>
-                <button className="btn border mx-2" onClick={plusPrice}>
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
+            <FoodPriceAndDetails
+              plusPrice={plusPrice}
+              minusPrice={minusPrice}
+              newfoodAmount={newfoodAmount}
+              foodItem={foodItem}
+              foodAmount={foodAmount}
+            ></FoodPriceAndDetails>
             <button
               className="btn btn-danger rounded-pill"
               onClick={() => {
@@ -61,7 +56,7 @@ const FoodDetails = () => {
               }}
             >
               {" "}
-              <i className="fas fa-shopping-cart pe-3"></i>Add
+              <i className="fas fa-shopping-cart p-2"></i>Add to cart
             </button>
           </div>
 

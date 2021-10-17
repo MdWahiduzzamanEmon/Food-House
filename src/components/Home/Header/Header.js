@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import logo from "../../../Images/logo2.png"
 import { HashLink } from "react-router-hash-link";
+import { useAddToCart } from '../../../Context/AddtoCart';
 const Header = () => {
-  const { user, logOut, addingFood } = useAuth();
-  console.log(addingFood);
+  const { user, logOut  } = useAuth();
+  const { addingFood } = useAddToCart();
+  // console.log(addingFood);
     return (
       <div>
         <Navbar bg="light" expand="lg" fixed="top">

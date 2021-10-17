@@ -29,16 +29,12 @@ const [name,setName]=useState('')
 const [photo,setPhoto]=useState('')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [popUpMessage, setPopUpMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [addingFood, setAddingFood] = useState([]);
+ 
 
-  const handleToAddToCart = (meal) => {
-    const adding = [...addingFood, meal];
-    setAddingFood(adding);
-  };
+ 
 
-  console.log(addingFood);
+  // console.log(addingFood);
   const auth = getAuth();
 
   // google sign
@@ -156,13 +152,10 @@ const [photo,setPhoto]=useState('')
     googleSign,
     user,
     error,
-    popUpMessage,
     twitterSign,
     logOut,
     isLoading,
     setIsLoading,
-    handleToAddToCart,
-    addingFood,
     handleToGetEmail,
     handleRegForm,
     handleToGetPassword,
