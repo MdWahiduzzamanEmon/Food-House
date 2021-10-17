@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAddToCart } from '../../Context/AddtoCart';
 import useData from '../../Hooks/useData';
 import FoodPriceAndDetails from './FoodPriceAndDetails';
@@ -69,6 +70,7 @@ const FoodDetails = () => {
               foodItem["f_price"] = newfoodAmount;
               handleToAddToCart(foodItem);
               history.push("/cartitem");
+              toast("Wow! Product Add to cart successfully");
             }}
           >
             {" "}
